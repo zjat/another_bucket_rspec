@@ -1,13 +1,44 @@
 class ItemsController < ApplicationController
+  
+
   def index
-  end
+    @items = Item.all
+  end #index
 
   def show
-  end
+    @item = Item.find(params[:id])
+  end #show
 
   def edit
-  end
+    @item = Item.find(params[:id])
+  end #edit
 
   def new
-  end
-end
+    @item = Item.new
+  end #new
+
+  def create
+    @item = Item.new(item_params)
+
+    if @item.save
+      redirect_to current_user_bucket_path
+    else
+      render :new
+    end #create/if
+  end #create
+
+  def update
+    @item = Item.find(params[:id])
+
+    if @item.update(item_params)
+      redirect_to current_user_bucket_path
+    else
+      render :edit
+    end #update if
+  end #update
+
+  private
+    def item_params
+      params.require(:item).permit(:name)
+    end #item_params
+end #class

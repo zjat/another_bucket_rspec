@@ -3,7 +3,6 @@ class BucketsController < ApplicationController
 before_action :bucket, only: [:show, :edit, :destroy, :update]
 
   def index
-    @buckets = current_user.buckets
   end
 
   def show
@@ -21,7 +20,6 @@ before_action :bucket, only: [:show, :edit, :destroy, :update]
   end
   
   def new
-    @bucket = current_user.buckets.new
   end
 
   def create 
