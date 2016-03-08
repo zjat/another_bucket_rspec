@@ -1,2 +1,5 @@
-<h1>Buckets#show</h1>
-<p>Find me in app/views/buckets/show.html.erb</p>
+<h1>Bucket's for <%= current_user.first_name %></h1>
+
+<% current_user.buckets.each do |bucket| %>
+<%= bucket.name %>
+<% end %>

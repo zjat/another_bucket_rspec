@@ -19,15 +19,15 @@ before_action :bucket, only: [:show, :edit, :destroy, :update]
       render :edit
     end
   end
-  
+
   def new
-    @bucket = current_user.buckets.new
+    @bucket = Bucket.new
   end
 
-  def create 
+  def create
     @bucket = current_user.buckets.new(bucket_params)
     if @bucket.save
-      redirect_to buckets_path
+      redirect_to bucket_path(@bucket)
     else
       render :new
     end
@@ -40,11 +40,11 @@ before_action :bucket, only: [:show, :edit, :destroy, :update]
 
   private
     def bucket
-      @bucket = current_user.bucket.find(params[:id])
+      @bucket = current_user.buckets.find(params[:id])
     end
 
     def bucket_params
-      params.require(:seller).permit(:name)
+      params.require(:bucket).permit(:name)
     end
 
 end
