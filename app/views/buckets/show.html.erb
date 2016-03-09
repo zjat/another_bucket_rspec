@@ -1,6 +1,6 @@
 <h1><%= @bucket.name %></h1>
 <% @bucket.items.each do |item| %>
-<%= item.name %>
+<p><%= item.name %></p>
 <% end %>
 <br />
 <%= link_to 'Edit Items', bucket_items_path(@bucket) %>

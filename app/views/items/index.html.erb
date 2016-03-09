@@ -5,4 +5,4 @@
   <%= link_to "Delete", bucket_item_path(@bucket, item), method: :delete %>
 <% end %>
 <br />
-<%= link_to 'Add Item', new_bucket_item_path(current_user) %>
+<%= link_to 'Add Item', new_bucket_item_path(@bucket) %>

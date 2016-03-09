@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :bucket
 
   def index
-    @items = @bucket.items 
+    @items = @bucket.items
   end #index
 
   def show
@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
 
     if @item.update(item_params)
-      redirect_to current_user_bucket_path
+      redirect_to bucket_items_path(@bucket)
     else
       render :edit
     end #update if
