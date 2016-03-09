@@ -1,5 +1,3 @@
-<h1>Bucket's for <%= current_user.first_name %></h1>
+<h1>SHOW BUCKET</h1>
 
-<% current_user.buckets.each do |bucket| %>
-<%= bucket.name %>
-<% end %>
+<%= link_to 'Edit Items', bucket_items_path(@bucket) %>

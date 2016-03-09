@@ -1,2 +1,3 @@
-<h1>Buckets#index</h1>
-<p>Find me in app/views/buckets/index.html.erb</p>
+<% current_user.buckets.each do |bucket| %>
+<%= link_to bucket.name, bucket_path(bucket) %>
+<% end %>

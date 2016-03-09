@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  
+
 
   def index
     @items = Item.all
@@ -15,13 +15,14 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    binding.pry
   end #new
 
   def create
-    @item = Item.new(item_params)
-
+    binding.pry
+    @item =
     if @item.save
-      redirect_to current_user_bucket_path
+      redirect_to bucket_path
     else
       render :new
     end #create/if
