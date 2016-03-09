@@ -1,3 +1,11 @@
-<% current_user.buckets.each do |bucket| %>
-<%= link_to bucket.name, bucket_path(bucket) %>
-<% end %>
+<h1><%= current_user.first_name %>'s Buckets</h1>
+  <% current_user.buckets.each do |bucket| %>
+    <h3><%= link_to bucket.name, bucket_path(bucket) %></h3>
+    <br />
+    <% bucket.items.each do |item| %>
+      <p><%= item.name %></p>
+    <% end %>
+    <%= link_to "Delete", bucket_path(bucket), method: :delete %>
+  <% end %>
+  <br />
+  <%= link_to "New Bucket", new_bucket_path %>

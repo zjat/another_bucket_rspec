@@ -1,12 +1,12 @@
 class ItemsController < ApplicationController
-
+  before_action :bucket
 
   def index
-    @items = Item.all
+    @items = @bucket.items 
   end #index
 
   def show
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:bucket_id])
   end #show
 
   def edit
@@ -15,17 +15,11 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    binding.pry
   end #new
 
   def create
-    binding.pry
-    @item =
-    if @item.save
-      redirect_to bucket_path
-    else
-      render :new
-    end #create/if
+    @bucket.items.create(item_params)
+    redirect_to bucket_items_path(@bucket)
   end #create
 
   def update
@@ -38,8 +32,18 @@ class ItemsController < ApplicationController
     end #update if
   end #update
 
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to bucket_items_path(@bucket)
+  end
+
   private
     def item_params
       params.require(:item).permit(:name)
     end #item_params
+
+    def bucket
+      @bucket = Bucket.find(params[:bucket_id])
+    end
 end #class
