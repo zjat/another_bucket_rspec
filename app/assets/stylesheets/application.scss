@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+ @import "materialize";
+
+.nav-wrapper {
+  background-color: lightblue;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.card {
+  background-color: lightblue;
+}
